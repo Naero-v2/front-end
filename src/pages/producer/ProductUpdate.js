@@ -182,6 +182,11 @@ function ProductUpdate() {
     }, [productImage]);
 
     const onChangeImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file && file.size > 10 * 1024 * 1024) {
+            alert("파일 크기가 너무 큽니다. 10MB 이하의 파일만 업로드할 수 있습니다.");
+            return;
+        }
         setProductImage(e.target.files[0]);
     };
 
